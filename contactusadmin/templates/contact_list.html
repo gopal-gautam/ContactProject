@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul class="list-group">
+{% for contact in contacts %}
+
+      <li class="list-group-item">
+            {{ contact.name }}
+            <a class="btn btn-info" href="{% url 'contactus:view-contact' pk=contact.id %}">View</a>
+            <a class="btn btn-info" href="{% url 'contactus:update-contact' pk=contact.id %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'contactus:delete-contact' pk=contact.id %}">Delete</a>
+      </li>
+
+{% endfor %}
+        </ul>
+<a class="btn btn-info" href="{% url 'contact_admin:export-contact' %}">Export</a>
+{% endblock content %}
